@@ -44,7 +44,7 @@ utils.validateConfig();
 const nuxt = spawn(
     which.sync("nuxt"),
     [
-        "modern=program.modern",
+        "--modern=program.modern",
         `-c=${utils.configPath}`,
         "--spa",
         `--port=${NUXT_PORT}`,
