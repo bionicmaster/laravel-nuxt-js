@@ -28,6 +28,7 @@ program
         "/__laravel_nuxt__",
     )
     .option("--laravel-path [path]", "Path to laravel directory", process.cwd())
+    .option("--modern [modern]", "Modern mode for nuxt", 'client')
     .parse(process.argv);
 
 const NUXT_PORT = parseInt(program.port);
@@ -43,7 +44,7 @@ utils.validateConfig();
 const nuxt = spawn(
     which.sync("nuxt"),
     [
-        "dev",
+        "modern=program.modern",
         `-c=${utils.configPath}`,
         "--spa",
         `--port=${NUXT_PORT}`,
