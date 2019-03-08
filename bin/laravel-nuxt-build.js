@@ -12,13 +12,14 @@ program
         "-a, --analyze",
         "Launch webpack-bundle-analyzer to optimize your bundles",
     )
+    .option("--modern [modern]", "Modern mode for nuxt", 'client')
     .parse(process.argv);
 
 utils.validateConfig();
 
 const build = spawn.sync(
     which.sync("nuxt"),
-    ["build", `-c=${utils.configPath}`, "--spa", program.analyze ? "-a" : ""],
+    ["build", `-c=${utils.configPath}`, "--spa", program.analyze ? "-a" : "", "--modern=program.modern"],
     {
         stdio: "inherit",
     },
